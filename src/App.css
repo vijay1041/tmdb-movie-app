@@ -20,6 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .logo {
@@ -99,6 +100,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 50%;
+  transform: translateY(-50%); /* vertically center clear button relative to input */
 }
 
 .search-clear-btn:hover {
@@ -287,6 +290,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative; /* for badge positioning */
 }
 
 .watchlist-btn:hover {
@@ -298,6 +302,31 @@
 .watchlist-btn.active {
   background: #dc2626;
   color: #fff;
+}
+
+/* badge that sits on top-right of watchlist button; shown only via data-count attribute */
+.watchlist-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  display: none; /* default hidden */
+  align-items: center;
+  justify-content: center;
+  line-height: 18px;
+  z-index: 2;
+}
+
+/* show badge only when .watchlist-btn has data-count and it's not "0" */
+.watchlist-btn[data-count]:not([data-count="0"]) .watchlist-badge {
+  display: inline-flex;
 }
 
 .movie-details {
@@ -666,5 +695,63 @@
   .modal-content {
     width: 95%;
     max-height: 80vh;
+  }
+}
+
+/* Mobile tweaks for <= 520px: wrap layout, full-width search on second row, bigger input and tappable icons */
+@media (max-width: 520px) {
+  .nav-container {
+    padding: 0 1rem;
+    align-items: center;
+  }
+
+  /* first row: logo + right-side links/icons */
+  .logo {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  .nav-links {
+    order: 1;
+    flex: 0 0 auto;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  /* second row: full width search bar */
+  .navbar-search-form {
+    order: 2;
+    flex-basis: 100%;
+    max-width: none;
+    margin: 0.75rem 0 0 0;
+    padding: 0 0.5rem;
+  }
+
+  .navbar-search-input {
+    height: 44px; /* increased tappable area */
+    padding: 0 1rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff; /* ensure typed text is white and readable */
+  }
+
+  .navbar-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* more visible placeholder on mobile */
+  }
+
+  .search-clear-btn {
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* larger, square tappable area for watchlist/icon buttons on mobile */
+  .watchlist-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    padding: 0;
   }
 }

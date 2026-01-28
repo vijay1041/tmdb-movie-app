@@ -97,7 +97,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="nav-container">
           <Link to="/" className="logo" onClick={resetSearch}>
-            🎬 MovieDB
+            MovieDB
           </Link>
 
           <form className="navbar-search-form" onSubmit={onSubmit}>
