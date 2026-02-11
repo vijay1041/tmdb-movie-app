@@ -1,8 +1,8 @@
 # 🎬 MovieDB – IMDB Clone
 
-A modern movie database web application built using React and TMDB API. The project focuses on clean UI, structured state management with Redux Toolkit, and smooth navigation using React Router.
+A modern movie database web application built using React and TMDB API. The project focuses on clean UI, structured state management with Redux Toolkit, and smooth client-side routing.
 
-This application allows users to explore trending movies, search titles, view detailed information, and manage a persistent watchlist.
+Users can explore trending movies, search by title, view detailed information, watch trailers, and manage a persistent watchlist.
 
 ---
 
@@ -13,10 +13,11 @@ This application allows users to:
 🎥 Browse trending movies  
 🔎 Search movies by title  
 📄 View detailed movie information  
-⭐ Add and remove movies to watchlist  
+🎬 Watch movie trailers in a modal  
+⭐ Add and remove movies from watchlist  
 💾 Persist watchlist using localStorage  
 
-The project follows a modular component-based architecture, making it easy to maintain and scale.
+The project follows a modular and scalable folder structure for maintainability.
 
 ---
 
@@ -25,10 +26,12 @@ The project follows a modular component-based architecture, making it easy to ma
 ### 🎬 User Features
 
 - Trending movies homepage  
-- Movie search functionality  
-- Detailed movie information page  
+- Search functionality  
+- Detailed movie pages  
+- Trailer modal integration  
 - Add/remove movies to watchlist  
 - Persistent watchlist using localStorage  
+- Smooth scrolling experience  
 
 ---
 
@@ -36,33 +39,48 @@ The project follows a modular component-based architecture, making it easy to ma
 
 ### 🎨 Frontend
 
-- React 18 – Component-based UI development  
-- Vite – Fast build tool and development server  
-- React Router v6 – Client-side routing  
-- Redux Toolkit – Global state management  
-- TMDB API – Movie data source  
-- CSS3 – Styling  
+- React 18  
+- Vite  
+- React Router v6  
+- Redux Toolkit  
+- TMDB API  
+- CSS3  
 
 ---
 
 ## 📁 Project Structure
 
-src/
-├── components/
-│   ├── Navbar.jsx
-│   └── MovieCard.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── MovieDetails.jsx
-│   ├── Search.jsx
-│   └── Watchlist.jsx
-├── redux/
-│   ├── store.js
-│   └── movieSlice.js
-├── services/
-│   └── api.js
-├── App.jsx
-└── main.jsx
+my-app/
+├── src/
+│   ├── components/
+│   │   ├── Loader.jsx
+│   │   ├── MovieCard.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── ScrollManager.jsx
+│   │   └── TrailerModal.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── MovieDetails.jsx
+│   │   ├── Search.jsx
+│   │   └── Watchlist.jsx
+│   │
+│   ├── redux/
+│   │   ├── movieSlice.js
+│   │   └── store.js
+│   │
+│   ├── services/
+│   │   └── api.js
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── App.css
+│   └── index.css
+│
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
 
 ---
 
@@ -83,7 +101,7 @@ cd MovieDB
 ### TMDB API Setup
 
 1. Get your API key from:  
-   https://www.themoviedb.org/settings/api  
+https://www.themoviedb.org/settings/api  
 
 2. Open `src/services/api.js` and replace:
 
@@ -101,7 +119,7 @@ npm install
 
 npm run dev  
 
-Application runs on: http://localhost:5173
+Application runs on: http://localhost:5173  
 
 ---
 
@@ -109,9 +127,9 @@ Application runs on: http://localhost:5173
 
 Redux Toolkit is used for:
 
-- Managing watchlist state globally  
+- Managing global watchlist state  
 - Adding and removing movies  
-- Persisting data using localStorage  
+- Persisting watchlist data in localStorage  
 
 ---
 
@@ -127,10 +145,10 @@ Redux Toolkit is used for:
 ## 🚀 Future Enhancements
 
 - Pagination for movie listings  
-- Dark mode toggle  
-- Improved loading states  
+- Dark mode support  
 - User authentication  
 - Movie ratings and reviews  
+- Performance optimization  
 
 ---
 
